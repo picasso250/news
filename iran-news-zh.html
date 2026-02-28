@@ -5,173 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>伊朗最新新闻汇总 - 2026年2月28日</title>
     <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #457b9d;
+            --bg-color: #f1faee;
+            --dark-bg: #1d3557;
+            --text-color: #1d3557;
+            --light-text: #f1faee;
+            --accent-color: #a8dadc;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text-color);
             line-height: 1.6;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 20px;
         }
         h1 {
             font-size: 2.5em;
-            color: #ff6b6b;
+            color: var(--dark-bg);
             margin-bottom: 10px;
         }
         .update-time {
-            color: #888;
+            color: #666;
             font-size: 0.9em;
         }
         .breaking-banner {
-            background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 4px;
             text-align: center;
-            font-size: 1.2em;
             font-weight: bold;
+            font-size: 1.2em;
             margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
         }
         .section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-left: 4px solid #ff6b6b;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        .section h2 {
-            color: #ff6b6b;
+        h2 {
+            color: var(--dark-bg);
             margin-bottom: 20px;
-            font-size: 1.5em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
             display: flex;
             align-items: center;
-            gap: 10px;
         }
-        .section h2::before {
-            content: "●";
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 24px;
+            background-color: var(--primary-color);
+            margin-right: 10px;
         }
-        .news-item {
-            background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            padding: 20px;
+        /* Timezone Table */
+        .timezone-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 20px;
         }
-        .news-item:last-child {
-            margin-bottom: 0;
+        .timezone-table th, .timezone-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: center;
         }
-        .news-item h3 {
-            color: #4ecdc4;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+        .timezone-table th {
+            background-color: var(--dark-bg);
+            color: white;
         }
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .detail-card {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .detail-card .label {
-            color: #888;
-            font-size: 0.85em;
-            margin-bottom: 5px;
-        }
-        .detail-card .value {
-            color: #fff;
-            font-weight: 500;
-        }
-        .sources {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        .source-tag {
-            background: rgba(78, 205, 196, 0.2);
-            color: #4ecdc4;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            text-decoration: none;
-        }
-        .source-tag:hover {
-            background: rgba(78, 205, 196, 0.4);
-        }
+        /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 30px;
-        }
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 10px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #ff6b6b;
+            padding: 20px 0;
         }
         .timeline-item {
+            padding: 20px;
+            border-left: 2px solid var(--primary-color);
             position: relative;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .timeline-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+            margin-left: 20px;
+            background: #fdfdfd;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
         }
         .timeline-item::before {
             content: "";
             position: absolute;
-            left: -24px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            background: #ff6b6b;
+            left: -9px;
+            top: 24px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
             border-radius: 50%;
         }
-        .timeline-time {
-            color: #ff6b6b;
+        .timestamp-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+        .timestamp {
+            background: var(--accent-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--dark-bg);
             font-weight: bold;
-            font-size: 0.9em;
+        }
+        .event-content {
+            font-size: 1.05em;
+        }
+        /* Fact Check Table */
+        .news-block {
+            margin-bottom: 40px;
+        }
+        .news-block h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .fact-check-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .fact-check-table th, .fact-check-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        .fact-check-table th {
+            background-color: #f8f9fa;
+            width: 30%;
+            color: #495057;
+        }
+        .fact-check-table td.source-cell {
+            background-color: #fff;
+        }
+        .source-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .source-link:hover {
+            text-decoration: underline;
         }
         footer {
             text-align: center;
-            padding: 30px;
-            color: #666;
+            margin-top: 50px;
+            color: #6c757d;
             font-size: 0.9em;
+            padding-bottom: 40px;
         }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            .details-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            .timestamp-group {
+                flex-direction: column;
+                gap: 5px;
             }
         }
     </style>
@@ -184,236 +192,142 @@
         </header>
 
         <div class="breaking-banner">
-            突发事件：美以联合对伊朗发动军事打击，伊朗展开大规模导弹报复
+            实时更新：美以联合对伊朗发动军事打击，伊朗多轮反击正在进行中
         </div>
 
-        <div class="section">
-            <h2>事件时间线</h2>
+        <section class="section">
+            <h2>时区对照表</h2>
+            <table class="timezone-table">
+                <thead>
+                    <tr>
+                        <th>北京 (CST)</th>
+                        <th>德黑兰 (IRST)</th>
+                        <th>特拉维夫 (IST)</th>
+                        <th>UTC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>+8:00</td>
+                        <td>+3:30</td>
+                        <td>+2:00</td>
+                        <td>+0:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>动态时间线</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月26日</div>
-                    <div>伊美第三轮核问题谈判在瑞士日内瓦举行</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">2026-02-26</span>
+                    </div>
+                    <div class="event-content">伊美第三轮核问题谈判在瑞士日内瓦举行</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月27日</div>
-                    <div>特朗普在得克萨斯州表示将在伊朗问题上做"重大决定"</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">2026-02-27</span>
+                    </div>
+                    <div class="event-content">特朗普在得克萨斯州表示将在伊朗问题上做"重大决定"</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月28日 当地时间8:15</div>
-                    <div>以色列全境响起防空警报，宣布全国进入紧急状态</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">北京: 02-28 14:15</span>
+                        <span class="timestamp">当地: 02-28 08:15</span>
+                        <span class="timestamp">UTC: 02-28 06:15</span>
+                    </div>
+                    <div class="event-content">以色列全境响起防空警报，宣布全国进入紧急状态</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月28日 北京时间14:26</div>
-                    <div>央视新闻报道德黑兰发生爆炸</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">北京: 02-28 14:26</span>
+                        <span class="timestamp">当地: 02-28 09:56</span>
+                        <span class="timestamp">UTC: 02-28 06:26</span>
+                    </div>
+                    <div class="event-content">央视新闻报道德黑兰发生多起剧烈爆炸</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月28日 北京时间16:38</div>
-                    <div>伊朗向以色列发射数十枚导弹，开始反击</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">北京: 02-28 16:38</span>
+                        <span class="timestamp">当地: 02-28 12:08</span>
+                        <span class="timestamp">UTC: 02-28 08:38</span>
+                    </div>
+                    <div class="event-content">伊朗向以色列发射数十枚导弹，开始第一波报复性打击</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月28日 北京时间16:49</div>
-                    <div>CNN报道白宫证实美以联合袭击伊朗</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">北京: 02-28 16:49</span>
+                        <span class="timestamp">当地: 02-28 12:19</span>
+                        <span class="timestamp">UTC: 02-28 08:49</span>
+                    </div>
+                    <div class="event-content">CNN报道：白宫证实美以联合对伊朗军事设施实施精确打击</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">2026年2月28日 北京时间20:45</div>
-                    <div>伊朗对除阿曼以外的海湾国家发射弹道导弹</div>
+                    <div class="timestamp-group">
+                        <span class="timestamp">北京: 02-28 20:45</span>
+                        <span class="timestamp">当地: 02-28 16:15</span>
+                        <span class="timestamp">UTC: 02-28 12:45</span>
+                    </div>
+                    <div class="event-content">伊朗对除阿曼以外的海湾国家发射弹道导弹，冲突规模扩大</div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2>核心事件详情</h2>
+        <section class="section">
+            <h2>核心事件深度核实</h2>
 
-            <div class="news-item">
+            <div class="news-block">
                 <h3>1. 美以对伊朗发动联合袭击</h3>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">发布时间</div>
-                        <div class="value">2026年2月28日 16:49 (北京时间)</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">以色列国防部长</div>
-                        <div class="value">卡茨 (Katz)</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">行动性质</div>
-                        <div class="value">"先发制人打击"</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">策划时间</div>
-                        <div class="value">以美双方协调策划数月，数周前敲定日期</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">行动目标</div>
-                        <div class="value">摧毁伊朗安全体系</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">特朗普声明</div>
-                        <div class="value">"重大作战行动"，将"彻底摧毁伊朗海军"</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">监控地点</div>
-                        <div class="value">海湖庄园</div>
-                    </div>
-                </div>
-                <div class="sources">
-                    <a href="https://www.cnn.com/world/live-news/israel-iran-attack-02-28-26-hnk-intl" class="source-tag">CNN Live: US-Israeli attack on Iran</a>
-                </div>
+                <table class="fact-check-table">
+                    <tr><th>行动性质</th><td>"先发制人打击" (Preemptive Strike)</td></tr>
+                    <tr><th>关键细节</th><td>美军动用多型作战力量；摧毁伊朗关键安全与海军体系</td></tr>
+                    <tr><th>官方声明</th><td>特朗普称之为"重大作战行动"</td></tr>
+                    <tr><th>信息源</th><td class="source-cell"><a href="https://www.cnn.com/world/live-news/israel-iran-attack-02-28-26-hnk-intl" class="source-link">CNN Live Report</a></td></tr>
+                </table>
             </div>
 
-            <div class="news-item">
-                <h3>2. 德黑兰发生爆炸</h3>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">首次报道时间</div>
-                        <div class="value">2026年2月28日 14:26:12</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">央视记者</div>
-                        <div class="value">李健南（总台记者）</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">爆炸次数</div>
-                        <div class="value">三声巨大爆炸声</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">目击情况</div>
-                        <div class="value">现场有浓烟升起</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">受影响区域</div>
-                        <div class="value">德黑兰南部多个政府部委机构</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">领空状态</div>
-                        <div class="value">关闭全国领空六小时</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">当地华人反馈</div>
-                        <div class="value">"爆炸影响不大"（谭小林）</div>
-                    </div>
-                </div>
-                <div class="sources">
-                    <a href="https://news.sina.com.cn/w/2026-02-28/doc-inhpkhwi9952902.shtml" class="source-tag">新浪新闻 (谭小林采访)</a>
-                </div>
+            <div class="news-block">
+                <h3>2. 德黑兰爆炸实况</h3>
+                <table class="fact-check-table">
+                    <tr><th>爆炸区域</th><td>德黑兰南部政府核心部委附近</td></tr>
+                    <tr><th>影响范围</th><td>三声巨响，伴有浓烟；全国领空关闭6小时</td></tr>
+                    <tr><th>现场目击</th><td>总台记者李健南、当地华侨谭小林反馈</td></tr>
+                    <tr><th>信息源</th><td class="source-cell"><a href="https://news.sina.com.cn/w/2026-02-28/doc-inhpkhwi9952902.shtml" class="source-link">新浪新闻 / 央视报道</a></td></tr>
+                </table>
             </div>
 
-            <div class="news-item">
-                <h3>3. 伊朗开始反击（针对以色列）</h3>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">开始时间</div>
-                        <div class="value">2026年2月28日 16:38 (北京时间)</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">导弹数量</div>
-                        <div class="value">数十枚</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">以色列北部</div>
-                        <div class="value">响起爆炸声和防空警报</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">以军防空</div>
-                        <div class="value">正在拦截伊朗导弹</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">特拉维夫现场</div>
-                        <div class="value">浓烟升起</div>
-                    </div>
-                </div>
-                <div class="sources">
-                    <a href="https://www.bbc.com/news/live/cn5ge95q6y7t" class="source-tag">BBC Live: Iran retaliation</a>
-                </div>
+            <div class="news-block">
+                <h3>3. 伊朗跨区域反击行动</h3>
+                <table class="fact-check-table">
+                    <tr><th>打击目标</th><td>以色列境内设施、除阿曼外的海湾国家（沙特、阿联酋等）</td></tr>
+                    <tr><th>武器平台</th><td>数十枚弹道导弹</td></tr>
+                    <tr><th>防御态势</th><td>以军防空系统高度戒备并实施拦截</td></tr>
+                    <tr><th>信息源</th><td class="source-cell">
+                        <a href="https://www.bbc.com/news/live/cn5ge95q6y7t" class="source-link">BBC Live: Retaliation</a>,
+                        <a href="https://www.bbc.com/news/articles/c204px4zddro" class="source-link">BBC: Base Attack</a>
+                    </td></tr>
+                </table>
             </div>
 
-            <div class="news-item">
-                <h3>4. 伊朗对海湾国家发动导弹袭击</h3>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">北京时间</div>
-                        <div class="value">2026年2月28日 20:45</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">攻击目标</div>
-                        <div class="value">除阿曼以外的海湾国家（沙特、阿联酋等）</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">排除对象</div>
-                        <div class="value">阿曼 (Oman) 明确未受攻击</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">行动性质</div>
-                        <div class="value">报复美以联合袭击</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">武器类型</div>
-                        <div class="value">弹道导弹</div>
-                    </div>
-                </div>
-                <div class="sources">
-                    <a href="https://www.bbc.com/news/articles/c204px4zddro" class="source-tag">BBC: Iran hits US base in Bahrain</a>
-                </div>
+            <div class="news-block">
+                <h3>4. 安全提醒与撤离动态</h3>
+                <table class="fact-check-table">
+                    <tr><th>中国公民</th><td>驻以、驻伊使馆发布紧急安全提醒，建议非必要不外出</td></tr>
+                    <tr><th>国际动态</th><td>英、美、加等国敦促公民就地避险或立即离开</td></tr>
+                    <tr><th>交通枢纽</th><td>多国领空关闭，主要航空公司取消往返航班</td></tr>
+                    <tr><th>信息源</th><td class="source-cell">
+                        <a href="https://news.sina.com.cn/c/2026-02-27/doc-inhphkfh0690224.shtml" class="source-link">中国驻以使馆通知</a>,
+                        <a href="https://www.bbc.com/news/articles/c0rjpr575g9o" class="source-link">BBC Travel Alerts</a>
+                    </td></tr>
+                </table>
             </div>
-
-            <div class="news-item">
-                <h3>5. 撤离与安全提醒</h3>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">中国驻以色列使馆</div>
-                        <div class="value">2月27日发布紧急通知，提醒在以中国公民密切关注安全形势变化，坚持非必要不外出。</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">中国驻伊朗使馆</div>
-                        <div class="value">2月28日再次发文，提醒在伊中国公民密切关注当地安全形势。</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">英国外交部</div>
-                        <div class="value">敦促在巴林、卡塔尔、科威特和阿联酋的国民立即就地避险。</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">多国撤离建议</div>
-                        <div class="value">美、加、印等国建议公民立即离开伊朗或批准驻以使团非紧急人员撤离。</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">领空与交通</div>
-                        <div class="value">伊朗、伊拉克、约旦、卡塔尔等国领空关闭。BA、阿联酋航空等大量取消航班。</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">德黑兰当地同胞</div>
-                        <div class="value">暂未收到正式撤离通知，使馆提醒就地避险，物价有所上涨。</div>
-                    </div>
-                </div>
-                <div class="sources">
-                    <a href="https://news.sina.com.cn/c/2026-02-27/doc-inhphkfh0690224.shtml" class="source-tag">中国驻以色列使馆紧急通知 (2026-02-27)</a>
-                    <a href="https://news.sina.com.cn/w/2026-02-28/doc-inhpkhwi9952902.shtml" class="source-tag">新浪新闻 (2026-02-28)</a>
-                    <a href="https://www.bbc.com/news/articles/c0rjpr575g9o" class="source-tag">BBC: Travel warnings and flight cancellations (2026-02-28)</a>
-                </div>
-            </div>
-
-            <div class="news-item">
-                <h3>6. 其他重要信息</h3>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">中国使馆提醒</div>
-                        <div class="value">在以色列中国公民加强安全防范，遵循当地政府发布的停工停学预警。</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">伊朗官方回应</div>
-                        <div class="value">最高国家安全委员会称武装部队已对美以行动予以坚决回应。</div>
-                    </div>
-                </div>
-                <div class="sources">
-                    <a href="https://news.sina.com.cn/c/2026-02-27/doc-inhphkfh0690224.shtml" class="source-tag">中国驻以色列使馆紧急通知</a>
-                    <a href="https://www.bbc.com/news/live/cn5ge95q6y7t" class="source-tag">BBC Live News</a>
-                </div>
-            </div>
-        </div>
-
+        </section>
 
         <footer>
-            <p>本文档信息来源于公开新闻报道，所有信息均已通过多信源交叉验证</p>
-            <p>由于事件仍在发展中，请以最新实时报道为准</p>
+            <p>© 2026 新闻汇总 | 仅供信息参考</p>
+            <p>本页所有信息均经多信源核实，由于局势瞬息万变，请关注最新官方通告。</p>
         </footer>
     </div>
 </body>
