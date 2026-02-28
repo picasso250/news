@@ -85,17 +85,6 @@
             margin-bottom: 15px;
             font-size: 1.2em;
         }
-        .verified {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: #27ae60;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            margin-bottom: 15px;
-        }
         .details-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -128,6 +117,10 @@
             padding: 4px 12px;
             border-radius: 15px;
             font-size: 0.8em;
+            text-decoration: none;
+        }
+        .source-tag:hover {
+            background: rgba(78, 205, 196, 0.4);
         }
         .timeline {
             position: relative;
@@ -167,23 +160,6 @@
             font-weight: bold;
             font-size: 0.9em;
         }
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        .summary-table th, .summary-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .summary-table th {
-            background: rgba(255,107,107,0.2);
-            color: #ff6b6b;
-        }
-        .summary-table tr:hover {
-            background: rgba(255,255,255,0.05);
-        }
         footer {
             text-align: center;
             padding: 30px;
@@ -204,7 +180,7 @@
     <div class="container">
         <header>
             <h1>伊朗最新新闻汇总</h1>
-            <p class="update-time">最后更新：2026年2月28日 21:15 | 所有信息均已核实</p>
+            <p class="update-time">最后更新：2026年2月28日 21:15</p>
         </header>
 
         <div class="breaking-banner">
@@ -250,12 +226,7 @@
 
             <div class="news-item">
                 <h3>1. 美以对伊朗发动联合袭击</h3>
-                <span class="verified">✓ 已核实</span>
                 <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">消息来源</div>
-                        <div class="value">CNN援引白宫官员</div>
-                    </div>
                     <div class="detail-card">
                         <div class="label">发布时间</div>
                         <div class="value">2026年2月28日 16:49 (北京时间)</div>
@@ -286,16 +257,12 @@
                     </div>
                 </div>
                 <div class="sources">
-                    <span class="source-tag">CNN</span>
-                    <span class="source-tag">央视新闻</span>
-                    <span class="source-tag">新浪财经</span>
-                    <span class="source-tag">环球网</span>
+                    <a href="https://www.cnn.com/world/live-news/israel-iran-attack-02-28-26-hnk-intl" class="source-tag">CNN Live: US-Israeli attack on Iran</a>
                 </div>
             </div>
 
             <div class="news-item">
                 <h3>2. 德黑兰发生爆炸</h3>
-                <span class="verified">✓ 已核实</span>
                 <div class="details-grid">
                     <div class="detail-card">
                         <div class="label">首次报道时间</div>
@@ -322,29 +289,18 @@
                         <div class="value">关闭全国领空六小时</div>
                     </div>
                     <div class="detail-card">
-                        <div class="label">伤亡情况</div>
-                        <div class="value">暂无人员伤亡报告</div>
-                    </div>
-                    <div class="detail-card">
                         <div class="label">当地华人反馈</div>
                         <div class="value">"爆炸影响不大"（谭小林）</div>
                     </div>
                 </div>
                 <div class="sources">
-                    <span class="source-tag">央视新闻</span>
-                    <span class="source-tag">新华社</span>
-                    <span class="source-tag">伊朗学生通讯社</span>
+                    <a href="https://news.sina.com.cn/w/2026-02-28/doc-inhpkhwi9952902.shtml" class="source-tag">新浪新闻 (谭小林采访)</a>
                 </div>
             </div>
 
             <div class="news-item">
                 <h3>3. 伊朗开始反击（针对以色列）</h3>
-                <span class="verified">✓ 已核实</span>
                 <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">消息来源</div>
-                        <div class="value">伊朗光明通讯社</div>
-                    </div>
                     <div class="detail-card">
                         <div class="label">开始时间</div>
                         <div class="value">2026年2月28日 16:38 (北京时间)</div>
@@ -363,19 +319,16 @@
                     </div>
                     <div class="detail-card">
                         <div class="label">特拉维夫现场</div>
-                        <div class="value">浓烟升起（新华社记者陈君清拍摄）</div>
+                        <div class="value">浓烟升起</div>
                     </div>
                 </div>
                 <div class="sources">
-                    <span class="source-tag">伊朗光明通讯社</span>
-                    <span class="source-tag">以色列国防军</span>
-                    <span class="source-tag">新华社</span>
+                    <a href="https://www.bbc.com/news/live/cn5ge95q6y7t" class="source-tag">BBC Live: Iran retaliation</a>
                 </div>
             </div>
 
             <div class="news-item">
                 <h3>4. 伊朗对海湾国家发动导弹袭击</h3>
-                <span class="verified">✓ 已核实</span>
                 <div class="details-grid">
                     <div class="detail-card">
                         <div class="label">北京时间</div>
@@ -399,136 +352,64 @@
                     </div>
                 </div>
                 <div class="sources">
-                    <span class="source-tag">路透社</span>
-                    <span class="source-tag">半岛电视台</span>
-                    <span class="source-tag">CNN</span>
+                    <a href="https://www.bbc.com/news/articles/c204px4zddro" class="source-tag">BBC: Iran hits US base in Bahrain</a>
                 </div>
             </div>
 
             <div class="news-item">
-                <h3>5. 其他重要信息</h3>
-                <span class="verified">✓ 已核实</span>
+                <h3>5. 撤离与安全提醒</h3>
                 <div class="details-grid">
                     <div class="detail-card">
-                        <div class="label">袭击目标（以方消息）</div>
-                        <div class="value">伊朗政府所有高级官员</div>
+                        <div class="label">中国驻以色列使馆</div>
+                        <div class="value">2月27日发布紧急通知，提醒在以中国公民密切关注安全形势变化，坚持非必要不外出。</div>
                     </div>
                     <div class="detail-card">
-                        <div class="label">中国使馆提醒</div>
-                        <div class="value">在以色列中国公民加强安全防范</div>
+                        <div class="label">中国驻伊朗使馆</div>
+                        <div class="value">2月28日再次发文，提醒在伊中国公民密切关注当地安全形势。</div>
                     </div>
                     <div class="detail-card">
-                        <div class="label">伊朗最高国家安全委员会</div>
-                        <div class="value">发布第1号公告，已予以坚决回应</div>
+                        <div class="label">英国外交部</div>
+                        <div class="value">敦促在巴林、卡塔尔、科威特和阿联酋的国民立即就地避险。</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="label">多国撤离建议</div>
+                        <div class="value">美、加、印等国建议公民立即离开伊朗或批准驻以使团非紧急人员撤离。</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="label">领空与交通</div>
+                        <div class="value">伊朗、伊拉克、约旦、卡塔尔等国领空关闭。BA、阿联酋航空等大量取消航班。</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="label">德黑兰当地同胞</div>
+                        <div class="value">暂未收到正式撤离通知，使馆提醒就地避险，物价有所上涨。</div>
                     </div>
                 </div>
                 <div class="sources">
-                    <span class="source-tag">央视新闻</span>
-                    <span class="source-tag">中国驻以色列使馆</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>事实核查汇总</h2>
-            <table class="summary-table">
-                <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>新闻内容</th>
-                        <th>核查结果</th>
-                        <th>主要信源</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>美以联合袭击伊朗</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>CNN、央视新闻、新浪财经</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>德黑兰发生爆炸</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>央视新闻、新华社</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>伊朗官方机构遭网络攻击</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>央视新闻</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>以色列全国进入紧急状态</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>以色列国防部长卡茨</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>伊朗关闭领空六小时</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>央视新闻</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>伊朗向以色列发射导弹</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>伊朗光明通讯社、以色列国防军</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>伊朗对海湾国家发动导弹袭击 (除阿曼外)</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>路透社、半岛电视台</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>伊美核问题谈判</td>
-                        <td style="color: #27ae60;">✓ 已核实</td>
-                        <td>阿曼外交大臣</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>背景事件</h2>
-            <div class="news-item">
-                <h3>2026年2月26日 - 伊美核问题谈判</h3>
-                <span class="verified">✓ 已核实</span>
-                <div class="details-grid">
-                    <div class="detail-card">
-                        <div class="label">谈判地点</div>
-                        <div class="value">瑞士日内瓦</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">调解方</div>
-                        <div class="value">阿曼外交大臣巴德尔</div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="label">谈判结果</div>
-                        <div class="value">取得进展但分歧仍存</div>
-                    </div>
+                    <a href="https://news.sina.com.cn/c/2026-02-27/doc-inhphkfh0690224.shtml" class="source-tag">中国驻以色列使馆紧急通知 (2026-02-27)</a>
+                    <a href="https://news.sina.com.cn/w/2026-02-28/doc-inhpkhwi9952902.shtml" class="source-tag">新浪新闻 (2026-02-28)</a>
+                    <a href="https://www.bbc.com/news/articles/c0rjpr575g9o" class="source-tag">BBC: Travel warnings and flight cancellations (2026-02-28)</a>
                 </div>
             </div>
 
             <div class="news-item">
-                <h3>2026年2月27日 - 特朗普发表讲话</h3>
-                <span class="verified">✓ 已核实</span>
+                <h3>6. 其他重要信息</h3>
                 <div class="details-grid">
                     <div class="detail-card">
-                        <div class="label">讲话地点</div>
-                        <div class="value">得克萨斯州</div>
+                        <div class="label">中国使馆提醒</div>
+                        <div class="value">在以色列中国公民加强安全防范，遵循当地政府发布的停工停学预警。</div>
                     </div>
                     <div class="detail-card">
-                        <div class="label">核心内容</div>
-                        <div class="value">"我们有一个重大决定要做"</div>
+                        <div class="label">伊朗官方回应</div>
+                        <div class="value">最高国家安全委员会称武装部队已对美以行动予以坚决回应。</div>
                     </div>
+                </div>
+                <div class="sources">
+                    <a href="https://news.sina.com.cn/c/2026-02-27/doc-inhphkfh0690224.shtml" class="source-tag">中国驻以色列使馆紧急通知</a>
+                    <a href="https://www.bbc.com/news/live/cn5ge95q6y7t" class="source-tag">BBC Live News</a>
                 </div>
             </div>
         </div>
+
 
         <footer>
             <p>本文档信息来源于公开新闻报道，所有信息均已通过多信源交叉验证</p>
