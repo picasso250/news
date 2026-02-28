@@ -1,5 +1,7 @@
 import requests
 import json
+import argparse
+import sys
 
 class PolymarketAPI:
     """
@@ -27,6 +29,45 @@ class PolymarketAPI:
             print(f"Error fetching market by slug: {e}")
             return None
 
+    def get_active_markets(self, limit=20, offset=0):
+        """
+        Fetch all active markets.
+        """
+        url = f"{self.BASE_URL}/markets"
+        params = {
+            "active": "true",
+            "closed": "false",
+            "limit": limit,
+            "offset": offset
+        }
+        try:
+            response = self.session.get(url, params=params)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            print(f"Error fetching active markets: {e}")
+            return []
+
+    def get_markets_by_tag(self, tag_id, limit=20, offset=0):
+        """
+        Fetch markets by a specific tag ID.
+        """
+        url = f"{self.BASE_URL}/markets"
+        params = {
+            "tag_id": tag_id,
+            "active": "true",
+            "closed": "false",
+            "limit": limit,
+            "offset": offset
+        }
+        try:
+            response = self.session.get(url, params=params)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            print(f"Error fetching markets by tag {tag_id}: {e}")
+            return []
+
     def extract_yes_price(self, market_data):
         """
         Extract the 'Yes' price (probability) from market data dictionary.
@@ -35,7 +76,6 @@ class PolymarketAPI:
             return None
 
         # outcomePrices and outcomes are usually stringified JSON arrays like '["0.977", "0.023"]'
-        # but sometimes they might already be parsed depending on the API client or gateway
         outcome_prices_raw = market_data.get("outcomePrices")
         outcomes_raw = market_data.get("outcomes")
 
@@ -51,40 +91,61 @@ class PolymarketAPI:
                 except (ValueError, IndexError):
                     # Fallback to the first price
                     return float(outcome_prices[0])
-            except (json.JSONDecodeError, ValueError, TypeError) as e:
+            except (json.JSONDecodeError, ValueError, TypeError):
                 pass
 
         # Fallback to lastTradePrice if available
         return market_data.get("lastTradePrice")
 
-    def get_market_price(self, slug):
-        """
-        Convenience method to get price directly from slug.
-        Note: If you already have market data, use extract_yes_price(market_data) to avoid an extra API call.
-        """
-        market = self.get_market_by_slug(slug)
-        return self.extract_yes_price(market)
+def main():
+    parser = argparse.ArgumentParser(description="Polymarket API Utility CLI")
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+
+    # Slug command
+    slug_parser = subparsers.add_parser("slug", help="Fetch market by slug")
+    slug_parser.add_argument("slug", help="The market slug")
+
+    # Tag command
+    tag_parser = subparsers.add_parser("tag", help="Fetch markets by tag ID")
+    tag_parser.add_argument("tag_id", type=int, help="The tag ID")
+    tag_parser.add_argument("--limit", type=int, default=10, help="Limit results (default: 10)")
+    tag_parser.add_argument("--offset", type=int, default=0, help="Offset results (default: 0)")
+
+    # Active command
+    active_parser = subparsers.add_parser("active", help="Fetch active markets")
+    active_parser.add_argument("--limit", type=int, default=10, help="Limit results (default: 10)")
+    active_parser.add_argument("--offset", type=int, default=0, help="Offset results (default: 0)")
+
+    args = parser.parse_args()
+    api = PolymarketAPI()
+
+    if args.command == "slug":
+        market = api.get_market_by_slug(args.slug)
+        if market:
+            price = api.extract_yes_price(market)
+            print(f"Question: {market.get('question')}")
+            print(f"ID: {market.get('id')}")
+            print(f"Probability (Yes): {price * 100 if price is not None else 'N/A'}%")
+            print(f"Volume: {market.get('volumeNum')}")
+        else:
+            print(f"Market with slug '{args.slug}' not found.")
+
+    elif args.command == "tag":
+        markets = api.get_markets_by_tag(args.tag_id, limit=args.limit, offset=args.offset)
+        print(f"Found {len(markets)} markets for tag ID {args.tag_id}:")
+        for m in markets:
+            price = api.extract_yes_price(m)
+            print(f"- [{m.get('id')}] {m.get('question')} (Prob: {price * 100 if price is not None else 'N/A'}%)")
+
+    elif args.command == "active":
+        markets = api.get_active_markets(limit=args.limit, offset=args.offset)
+        print(f"Found {len(markets)} active markets:")
+        for m in markets:
+            price = api.extract_yes_price(m)
+            print(f"- [{m.get('id')}] {m.get('question')} (Prob: {price * 100 if price is not None else 'N/A'}%)")
+
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
-    api = PolymarketAPI()
-    target_slug = "khamenei-out-as-supreme-leader-of-iran-by-march-31"
-
-    print(f"Fetching details for slug: {target_slug}...")
-    market_details = api.get_market_by_slug(target_slug)
-
-    if market_details:
-        print("\nMarket Details:")
-        print(f"Question: {market_details.get('question')}")
-        print(f"ID: {market_details.get('id')}")
-        print(f"Ends: {market_details.get('endDate')}")
-
-        # Extract price from the already fetched market_details to avoid redundant call
-        price = api.extract_yes_price(market_details)
-        print(f"\nLatest 'Yes' Price (Probability): {price}")
-
-        if price is not None:
-            print(f"Verification successful: Current probability is {price * 100:.2f}%")
-        else:
-            print("Verification failed: Could not retrieve price.")
-    else:
-        print("Verification failed: Could not retrieve market details.")
+    main()
