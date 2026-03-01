@@ -105,13 +105,13 @@
 
 | 预测问题 | 概率 (Yes) | 交易量 |
 |----------|------------|--------|
-| 哈梅内伊在3月31日前离任？ | 97.7% | $34.6M |
-| 美国或以色列在3月1日打击伊朗？ | 95.3% | $472K |
-| 伊朗现政权在6月30日前倒台？ | 58.5% | $2.6M |
-| 伊朗现政权在2027年前倒台？ | 63.5% | $5.9M |
-| 伊朗在3月31日前关闭霍尔木兹海峡？ | 57.0% | $1.5M |
-| 2027年前达成美伊核协议？ | 62.0% | $262K |
-| 2027年前美国入侵伊朗？ | 27.5% | $191K |
+| [哈梅内伊在3月31日前离任？](https://polymarket.com/event/khamenei-out-as-supreme-leader-of-iran-by-march-31) | 97.7% | $34.6M |
+| [美国或以色列在3月1日打击伊朗？](https://polymarket.com/event/usisrael-strikes-iran-on/will-us-or-israel-strike-iran-on-march-1-2026) | 95.3% | $472K |
+| [伊朗现政权在6月30日前倒台？](https://polymarket.com/event/will-the-iranian-regime-fall-by-june-30) | 58.5% | $2.6M |
+| [伊朗现政权在2027年前倒台？](https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026) | 63.5% | $5.9M |
+| [伊朗在3月31日前关闭霍尔木兹海峡？](https://polymarket.com/event/will-iran-close-the-strait-of-hormuz-by-2027/will-iran-close-the-strait-of-hormuz-by-march-31) | 57.0% | $1.5M |
+| [2027年前达成美伊核协议？](https://polymarket.com/event/us-iran-nuclear-deal-before-2027) | 62.0% | $262K |
+| [2027年前美国入侵伊朗？](https://polymarket.com/event/will-the-us-invade-iran-before-2027) | 27.5% | $191K |
 
 ---
 
