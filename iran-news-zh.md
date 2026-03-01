@@ -105,13 +105,13 @@
 
 | 预测问题 | 概率 (Yes) | 交易量 |
 |----------|------------|--------|
-| [哈梅内伊在3月31日前离任？](https://polymarket.com/search?q=%E5%93%88%E6%A2%85%E5%86%85%E4%BC%8A%E5%9C%A83%E6%9C%8831%E6%97%A5%E5%89%8D%E7%A6%BB%E4%BB%BB%EF%BC%9F) | 97.7% | $34.6M |
-| [美国或以色列在3月1日打击伊朗？](https://polymarket.com/search?q=%E7%BE%8E%E5%9B%BD%E6%88%96%E4%BB%A5%E8%89%B2%E5%88%97%E5%9C%A83%E6%9C%881%E6%97%A5%E6%89%93%E5%87%BB%E4%BC%8A%E6%9C%97%EF%BC%9F) | 95.3% | $472K |
-| [伊朗现政权在6月30日前倒台？](https://polymarket.com/search?q=%E4%BC%8A%E6%9C%97%E7%8E%B0%E6%94%BF%E6%9D%83%E5%9C%A86%E6%9C%8830%E6%97%A5%E5%89%8D%E5%80%92%E5%8F%B0%EF%BC%9F) | 58.5% | $2.6M |
-| [伊朗现政权在2027年前倒台？](https://polymarket.com/search?q=%E4%BC%8A%E6%9C%97%E7%8E%B0%E6%94%BF%E6%9D%83%E5%9C%A82027%E5%B9%B4%E5%89%8D%E5%80%92%E5%8F%B0%EF%BC%9F) | 63.5% | $5.9M |
-| [伊朗在3月31日前关闭霍尔木兹海峡？](https://polymarket.com/search?q=%E4%BC%8A%E6%9C%97%E5%9C%A83%E6%9C%8831%E6%97%A5%E5%89%8D%E5%85%B3%E9%97%AD%E9%9C%8D%E5%B0%94%E6%9C%A8%E5%85%B9%E6%B5%B7%E5%B3%A1%EF%BC%9F) | 57.0% | $1.5M |
-| [2027年前达成美伊核协议？](https://polymarket.com/search?q=2027%E5%B9%B4%E5%89%8D%E8%BE%BE%E6%88%90%E7%BE%8E%E4%BC%8A%E6%A0%B8%E5%8D%8F%E8%AE%AE%EF%BC%9F) | 62.0% | $262K |
-| [2027年前美国入侵伊朗？](https://polymarket.com/search?q=2027%E5%B9%B4%E5%89%8D%E7%BE%8E%E5%9B%BD%E5%85%A5%E4%BE%B5%E4%BC%8A%E6%9C%97%EF%BC%9F) | 27.5% | $191K |
+| [哈梅内伊在3月31日前离任？](https://polymarket.com/event/khamenei-out-as-supreme-leader-of-iran-by-march-31) | 97.7% | $34.6M |
+| [美国或以色列在3月1日打击伊朗？](https://polymarket.com/event/usisrael-strikes-iran-on/will-us-or-israel-strike-iran-on-march-1-2026) | 95.3% | $472K |
+| [伊朗现政权在6月30日前倒台？](https://polymarket.com/event/will-the-iranian-regime-fall-by-june-30) | 58.5% | $2.6M |
+| [伊朗现政权在2027年前倒台？](https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026) | 63.5% | $5.9M |
+| [伊朗在3月31日前关闭霍尔木兹海峡？](https://polymarket.com/event/will-iran-close-the-strait-of-hormuz-by-2027/will-iran-close-the-strait-of-hormuz-by-march-31) | 57.0% | $1.5M |
+| [2027年前达成美伊核协议？](https://polymarket.com/event/us-iran-nuclear-deal-before-2027) | 62.0% | $262K |
+| [2027年前美国入侵伊朗？](https://polymarket.com/event/will-the-us-invade-iran-before-2027) | 27.5% | $191K |
 
 ---
 
