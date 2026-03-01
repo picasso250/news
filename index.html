@@ -2,10 +2,94 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=2026-03-01.html">
-    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宏观与行业分析报告中心</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #e74c3c;
+            --link-color: #3498db;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .report-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .report-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--link-color);
+            border-radius: 4px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .report-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .report-item a {
+            display: block;
+            font-size: 1.4em;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .report-item a:hover {
+            color: var(--link-color);
+        }
+        .report-date {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <p>如果浏览器没有自动跳转，请<a href="2026-03-01.html">点击这里</a>。</p>
+    <div class="container">
+        <header>
+            <h1>宏观与行业分析报告中心</h1>
+        </header>
+
+        <ul class="report-list">
+            <li class="report-item">
+                <a href="2026-03-01.html">今日宏观与行业核心分析报告 (2026-03-01)</a>
+                <p class="report-date">包含：派拉蒙收购华纳兄弟、美伊冲突与油价风险</p>
+            </li>
+            <li class="report-item" style="border-left-color: var(--accent-color);">
+                <a href="iran-news-zh.html">伊朗局势突发专题报道</a>
+                <p class="report-date">深度关注中东地缘政治变局及其全球影响</p>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
