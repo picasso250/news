@@ -1,3 +1,2 @@
-- 所有信息必须是已核实的（权威媒体）
-- 所有的 source 必须有链接
 - 优先从 CNN BBC Reuters 等外媒找源(使用 url_to_md.py )
+- 必须有 source 链接
