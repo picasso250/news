@@ -1,2 +1,2 @@
-- 优先从 CNN BBC Reuters 等外媒找源(使用 url_to_md.py )
+- 优先从 CNN BBC Reuters 等外媒找源(使用 url2md.py )
 - 必须有 source 链接

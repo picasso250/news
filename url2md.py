@@ -28,6 +28,26 @@ def convert_to_md(soup):
 
         tag_name = element.name
 
+        # Handle tables
+        if tag_name == 'table':
+            rows = element.find_all('tr')
+            if not rows:
+                return ""
+
+            md_table = "\n"
+            for i, row in enumerate(rows):
+                cols = row.find_all(['td', 'th'])
+                if not cols:
+                    continue
+                row_data = [walk(col).strip() for col in cols]
+                md_table += "| " + " | ".join(row_data) + " |\n"
+
+                # Add separator after header row
+                if i == 0 and (row.find('th') or element.find('thead')):
+                    md_table += "|" + "|".join(["---"] * len(cols)) + "|\n"
+
+            return md_table + "\n"
+
         # 1. Handle headers h1-h4
         if tag_name in ['h1', 'h2', 'h3', 'h4']:
             level = int(tag_name[1])
