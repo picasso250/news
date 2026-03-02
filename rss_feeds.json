@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Andrej Karpathy",
+    "url": "https://karpathy.github.io/feed.xml"
+  },
+  {
+    "name": "Lilian Weng",
+    "url": "https://lilianweng.github.io/index.xml"
+  },
+  {
+    "name": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/feed.xml"
+  }
+]

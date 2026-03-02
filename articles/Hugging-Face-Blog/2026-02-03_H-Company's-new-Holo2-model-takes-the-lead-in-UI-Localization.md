@@ -1,0 +1,16 @@
+[Hugging Face](/) [Models](/models) [Datasets](/datasets) [Spaces](/spaces) Community [Docs](/docs) [Enterprise](/enterprise) [Pricing](/pricing) [Log In](/login) [Sign Up](/join) [Back to Articles](/blog)
+# HTML_TAG_START H Company's new Holo2 model takes the lead in UI Localization HTML_TAG_END
+[Team Article](/blog) Published February 3, 2026 [Upvote 5](/login?next=%2Fblog%2FHcompany%2Fintroducing-holo2-235b-a22b) [Ramzi De Coster ramzidecoster Follow](/ramzidecoster) [Hcompany](/Hcompany) [Hamza Benchekroun hamza-hcompany Follow](/hamza-hcompany) [Hcompany](/Hcompany) [Aurélien Lac h-aurelien-lac Follow](/h-aurelien-lac) [Hcompany](/Hcompany) [Tony Wu h-tonywu Follow](/h-tonywu) [Hcompany](/Hcompany) [Pierre-Louis Cedoz plcedoz38 Follow](/plcedoz38) [Hcompany](/Hcompany) [Kai Yuan h-kaiy Follow](/h-kaiy) [Hcompany](/Hcompany) [Mart Bakler mbakler-h Follow](/mbakler-h) [Hcompany](/Hcompany) [Antoine Bonnet ABonnetH Follow](/ABonnetH) [Hcompany](/Hcompany) HTML_TAG_START
+Two months since releasing our first batch of Holo2 models, H Company is back with our largest UI localization model yet: Holo2-235B-A22B Preview . This model achieves a new State-of-the-Art (SOTA) record of 78.5% on [Screenspot-Pro](https://gui-agent.github.io/grounding-leaderboard/) and 79.0% on OSWorld G.
+Available on [Hugging Face](https://huggingface.co/Hcompany/Holo2-235B-A22B) , Holo2-235B-A22B Preview is a research release focused on UI element localization.
+Agentic Localization
+High-resolution 4K interfaces are challenging for localization models. Small UI elements can be difficult to pinpoint on a large display. With agentic localization, however, Holo2 can iteratively refine its predictions, improving accuracy with each step and unlocking 10-20% relative gains across all Holo2 model sizes.
+Holo2-235B-A22B's Performance on ScreenSpot-Pro
+Holo2-235B-A22B Preview reaches 70.6% accuracy on ScreenSpot-Pro in a single step. In agent mode, it achieves 78.5% within 3 steps, setting a new state-of-the-art on the most challenging GUI grounding benchmark.
+Trained with SkyPilot
+Training Holo2 models at scale requires coordinating workloads across multiple cloud providers. H Company uses [SkyPilot](https://skypilot.readthedocs.io/) as a unified interface for launching training jobs on our clusters with Kubernetes (k8s). By abstracting away infrastructure complexity, SkyPilot lets researchers focus on model development instead of managing k8s manifests or maintaining separate deployment scripts.
+HTML_TAG_END
+### Community
+Edit Preview Upload images, audio, and videos by dragging in the text input, pasting, or clicking here . Tap or paste here to upload images Comment
+· [Sign up](/join?next=%2Fblog%2FHcompany%2Fintroducing-holo2-235b-a22b) or [log in](/login?next=%2Fblog%2FHcompany%2Fintroducing-holo2-235b-a22b) to comment
+[Upvote 5](/login?next=%2Fblog%2FHcompany%2Fintroducing-holo2-235b-a22b) System theme Company [TOS](/terms-of-service) [Privacy](/privacy) [About](/huggingface) [Careers](https://apply.workable.com/huggingface/) Website [Models](/models) [Datasets](/datasets) [Spaces](/spaces) [Pricing](/pricing) [Docs](/docs) Stripe
