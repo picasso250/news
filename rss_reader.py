@@ -25,7 +25,10 @@ def save_json(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def clean_filename(title):
-    return re.sub(r'[\\/*?:"<>|]', "", title).strip()
+    # Remove invalid characters
+    cleaned = re.sub(r'[\\/*?:"<>|]', "", title).strip()
+    # Replace spaces with hyphens
+    return re.sub(r'\s+', "-", cleaned)
 
 def fetch_feed(url):
     try:
