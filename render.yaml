@@ -2,7 +2,15 @@ services:
   - type: web
     name: news-xyz
     runtime: static
-    # The build command installs Python dependencies and generates the HTML
-    buildCommand: pip install -r requirements.txt && python iran_news_gen.py
-    # The directory where the built HTML files reside
+    # Build command updates markets and generates the HTML
+    buildCommand: pip install -r requirements.txt && python update_markets.py && python iran_news_gen.py
     staticPublishPath: ./
+
+  - type: cron
+    name: update-polymarket
+    env: python
+    schedule: "0 * * * *" # Hourly
+    buildCommand: pip install -r requirements.txt
+    # Update markets and then you might want to trigger a redeploy of the static site
+    # via a deploy hook if you have one set up.
+    startCommand: python update_markets.py && python iran_news_gen.py

@@ -5,6 +5,8 @@ import os
 
 def generate_timeline_html(tsv_path):
     timeline_items = []
+    if not os.path.exists(tsv_path):
+        return ""
     with open(tsv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f, delimiter='	')
         for row in reader:
@@ -23,50 +25,85 @@ def generate_timeline_html(tsv_path):
     
     return '<div class="timeline">' + "".join(timeline_items) + '</div>'
 
-def convert_md_to_html(md_path, timeline_html):
+def generate_markets_html(tsv_path):
+    if not os.path.exists(tsv_path):
+        return ""
+    
+    rows = []
+    with open(tsv_path, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f, delimiter='	')
+        for row in reader:
+            # Construct Polymarket URL - some slugs might need prefixing but we'll use a direct search link if unsure
+            # or just assume the event slug is provided.
+            # Actually, most of these are market slugs.
+            url = f"https://polymarket.com/event/{row['slug']}"
+            rows.append(f"""
+      <tr>
+       <td><a href="{url}">{row['title']}</a></td>
+       <td>{row['prob']}</td>
+       <td>{row['cap']}</td>
+      </tr>""")
+    
+    html = f"""
+    <table class="timezone-table">
+     <thead>
+      <tr>
+       <th>预测问题</th>
+       <th>概率 (Yes)</th>
+       <th>交易量</th>
+      </tr>
+     </thead>
+     <tbody>
+      {"".join(rows)}
+     </tbody>
+    </table>"""
+    return html
+
+def convert_md_to_html(md_path, timeline_html, markets_html):
     with open(md_path, 'r', encoding='utf-8') as f:
         md_content = f.read()
     
-    # Replace TIMELINE placeholder in MD or just handle it after conversion
     md_content = md_content.replace('TIMELINE', '<!-- TIMELINE_PLACEHOLDER -->')
+    md_content = md_content.replace('MARKETS', '<!-- MARKETS_PLACEHOLDER -->')
     
-    # Convert MD to HTML (using tables extension)
     html_body = markdown.markdown(md_content, extensions=['tables', 'fenced_code'])
     
-    # Use BeautifulSoup to inject classes and the timeline
     soup = BeautifulSoup(html_body, 'html.parser')
     
-    # Replace placeholder with actual timeline HTML
-    placeholder = soup.find(string=lambda text: "TIMELINE_PLACEHOLDER" in text)
-    if placeholder:
+    # Replace TIMELINE
+    placeholder_t = soup.find(string=lambda text: "TIMELINE_PLACEHOLDER" in text)
+    if placeholder_t:
         timeline_soup = BeautifulSoup(timeline_html, 'html.parser')
-        placeholder.replace_with(timeline_soup)
+        placeholder_t.replace_with(timeline_soup)
+        
+    # Replace MARKETS
+    placeholder_m = soup.find(string=lambda text: "MARKETS_PLACEHOLDER" in text)
+    if placeholder_m:
+        markets_soup = BeautifulSoup(markets_html, 'html.parser')
+        placeholder_m.replace_with(markets_soup)
 
     # Process tables
     tables = soup.find_all('table')
     for i, table in enumerate(tables):
-        # First table is usually the timezone table
         if i == 0:
             table['class'] = 'timezone-table'
         else:
-            table['class'] = 'fact-check-table'
-            # Wrap in news-block if it's under an h3
-            parent = table.find_parent()
-            # This is a bit simplified, but let's try to match the original structure
-            # For each table that isn't the first one, we might want to ensure it's styled correctly
-            pass
+            if not table.get('class'):
+                table['class'] = 'fact-check-table'
 
     return str(soup)
 
 def main():
     md_file = 'iran-news-zh.md'
-    tsv_file = 'iran-news-timeline.tsv'
+    timeline_tsv = 'iran-news-timeline.tsv'
+    markets_tsv = 'iran-news-markets.tsv'
     output_file = 'iran-news-zh.html'
     
-    timeline_html = generate_timeline_html(tsv_file)
-    content_html = convert_md_to_html(md_file, timeline_html)
+    timeline_html = generate_timeline_html(timeline_tsv)
+    markets_html = generate_markets_html(markets_tsv)
+    content_html = convert_md_to_html(md_file, timeline_html, markets_html)
     
-    # Define the full template
+    # Define the full template (kept same as before)
     template = f"""<!DOCTYPE html>
 <html lang="zh-CN">
  <head>
