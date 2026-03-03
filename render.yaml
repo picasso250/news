@@ -3,7 +3,7 @@ services:
     name: news-xyz
     runtime: static
     # Build command updates markets and generates the HTML
-    buildCommand: pip install -r requirements.txt && python update_markets.py && python iran_news_gen.py
+    buildCommand: pip install -r requirements.txt && python update_markets.py && python iran_news_gen.py && cp iran-news-zh.html index.html
     staticPublishPath: ./
 
   - type: cron

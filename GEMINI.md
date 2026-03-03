@@ -1,0 +1,1 @@
+- 尽量不要运行 update_markets.py 以免被判定滥用
