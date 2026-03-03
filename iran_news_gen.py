@@ -2,11 +2,12 @@ import markdown
 import csv
 from bs4 import BeautifulSoup
 import os
+import re
 
 def generate_timeline_html(tsv_path):
     timeline_items = []
     if not os.path.exists(tsv_path):
-        return ""
+        return f"<!-- File not found: {tsv_path} -->"
     with open(tsv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f, delimiter='	')
         for row in reader:
@@ -27,15 +28,12 @@ def generate_timeline_html(tsv_path):
 
 def generate_markets_html(tsv_path):
     if not os.path.exists(tsv_path):
-        return ""
+        return f"<!-- File not found: {tsv_path} -->"
     
     rows = []
     with open(tsv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f, delimiter='	')
         for row in reader:
-            # Construct Polymarket URL - some slugs might need prefixing but we'll use a direct search link if unsure
-            # or just assume the event slug is provided.
-            # Actually, most of these are market slugs.
             url = f"https://polymarket.com/event/{row['slug']}"
             rows.append(f"""
       <tr>
@@ -59,28 +57,42 @@ def generate_markets_html(tsv_path):
     </table>"""
     return html
 
-def convert_md_to_html(md_path, timeline_html, markets_html):
+def handle_insert(match):
+    label = match.group(1)
+    path = match.group(2)
+    
+    if "timeline" in path:
+        return f"<!-- INSERT_START:{path} -->\n{generate_timeline_html(path)}\n<!-- INSERT_END -->"
+    elif "markets" in path:
+        return f"<!-- INSERT_START:{path} -->\n{generate_markets_html(path)}\n<!-- INSERT_END -->"
+    else:
+        return f"<!-- Unsupported insert: {path} -->"
+
+def convert_md_to_html(md_path):
     with open(md_path, 'r', encoding='utf-8') as f:
         md_content = f.read()
     
-    md_content = md_content.replace('TIMELINE', '<!-- TIMELINE_PLACEHOLDER -->')
-    md_content = md_content.replace('MARKETS', '<!-- MARKETS_PLACEHOLDER -->')
+    # Use regex to find [INSERT label](path) and replace it with HTML placeholders
+    # We do this before MD conversion to ensure our custom HTML is preserved or 
+    # handled correctly.
+    md_content = re.sub(r'\[INSERT .*?\]\((.*?)\)', lambda m: f"<!-- DIV_START:{m.group(1)} -->", md_content)
+    # Also handle the old MARKETS/TIMELINE just in case
+    md_content = md_content.replace('TIMELINE', '').replace('MARKETS', '')
     
     html_body = markdown.markdown(md_content, extensions=['tables', 'fenced_code'])
-    
     soup = BeautifulSoup(html_body, 'html.parser')
     
-    # Replace TIMELINE
-    placeholder_t = soup.find(string=lambda text: "TIMELINE_PLACEHOLDER" in text)
-    if placeholder_t:
-        timeline_soup = BeautifulSoup(timeline_html, 'html.parser')
-        placeholder_t.replace_with(timeline_soup)
+    # Now find the placeholders in the soup and replace them with actual data
+    for comment in soup.find_all(string=lambda text: isinstance(text, str) and "DIV_START:" in text):
+        path = comment.split("DIV_START:")[1].strip()
+        if "timeline" in path:
+            new_content = BeautifulSoup(generate_timeline_html(path), 'html.parser')
+        elif "markets" in path:
+            new_content = BeautifulSoup(generate_markets_html(path), 'html.parser')
+        else:
+            new_content = BeautifulSoup(f"<p>Unsupported: {path}</p>", 'html.parser')
         
-    # Replace MARKETS
-    placeholder_m = soup.find(string=lambda text: "MARKETS_PLACEHOLDER" in text)
-    if placeholder_m:
-        markets_soup = BeautifulSoup(markets_html, 'html.parser')
-        placeholder_m.replace_with(markets_soup)
+        comment.replace_with(new_content)
 
     # Process tables
     tables = soup.find_all('table')
@@ -95,15 +107,10 @@ def convert_md_to_html(md_path, timeline_html, markets_html):
 
 def main():
     md_file = 'iran-news-zh.md'
-    timeline_tsv = 'iran-news-timeline.tsv'
-    markets_tsv = 'iran-news-markets.tsv'
     output_file = 'iran-news-zh.html'
     
-    timeline_html = generate_timeline_html(timeline_tsv)
-    markets_html = generate_markets_html(markets_tsv)
-    content_html = convert_md_to_html(md_file, timeline_html, markets_html)
+    content_html = convert_md_to_html(md_file)
     
-    # Define the full template (kept same as before)
     template = f"""<!DOCTYPE html>
 <html lang="zh-CN">
  <head>

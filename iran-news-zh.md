@@ -18,7 +18,7 @@
 
 ## 动态时间线 (2026年2月28日 - 3月1日)
 
-TIMELINE
+[INSERT iran-news-timeline.tsv](iran-news-timeline.tsv)
 
 ---
 
@@ -100,7 +100,7 @@ TIMELINE
 
 ## 预测市场情绪 (Polymarket)
 
-MARKETS
+[INSERT iran-news-markets.tsv](iran-news-markets.tsv)
 
 ---
 
