@@ -1,7 +1,7 @@
 services:
-  - type: static
+  - type: web
     name: news
-    env: static
+    runtime: static
     # The build command installs Python dependencies and generates the HTML
     buildCommand: pip install -r requirements.txt && python iran_news_gen.py
     # The directory where the built HTML files reside
