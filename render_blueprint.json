@@ -1,0 +1,17 @@
+{
+  "blueprints": [
+    {
+      "name": "iran_news",
+      "output": "iran-news-zh.html",
+      "sources": {
+        "markdown": "iran-news-zh.md",
+        "timeline": "iran-news-timeline.tsv"
+      },
+      "template": {
+        "title": "伊朗最新新闻汇总 - 2026年3月1日",
+        "breaking_news": "实时更新：伊朗国家电视台正式确认哈梅内伊在美以空袭中身亡，伊朗成立权力过渡委员会",
+        "last_update": "2026年3月1日 11:35 (北京时间)"
+      }
+    }
+  ]
+}
