@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: news
+    name: news-xyz
     runtime: static
     # The build command installs Python dependencies and generates the HTML
     buildCommand: pip install -r requirements.txt && python iran_news_gen.py
