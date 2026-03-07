@@ -9,7 +9,10 @@ async def get_html(url):
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
         # Set a timeout and wait for network idle to ensure dynamic content is loaded
-        await page.goto(url, wait_until="networkidle", timeout=60000)
+        try:
+            await page.goto(url, wait_until="networkidle", timeout=30000)
+        except Exception as e:
+            print(f"Warning: networkidle timed out, proceeding anyway: {e}")
         content = await page.content()
         await browser.close()
         return content
