@@ -2,3 +2,5 @@ markdown
 beautifulsoup4
 requests
 feedparser
+lxml
+playwright
