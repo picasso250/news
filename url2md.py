@@ -9,7 +9,10 @@ async def get_html(url):
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
         # Set a timeout and wait for network idle to ensure dynamic content is loaded
-        await page.goto(url, wait_until="networkidle", timeout=60000)
+        try:
+            await page.goto(url, wait_until="networkidle", timeout=30000)
+        except Exception:
+            pass
         content = await page.content()
         await browser.close()
         return content
@@ -39,7 +42,7 @@ def convert_to_md(soup):
                 cols = row.find_all(['td', 'th'])
                 if not cols:
                     continue
-                row_data = [walk(col).strip() for col in cols]
+                row_data = (walk(col).strip() for col in cols)
                 md_table += "| " + " | ".join(row_data) + " |\n"
 
                 # Add separator after header row
@@ -51,24 +54,24 @@ def convert_to_md(soup):
         # 1. Handle headers h1-h4
         if tag_name in ['h1', 'h2', 'h3', 'h4']:
             level = int(tag_name[1])
-            inner = " ".join(filter(None, [walk(c) for c in element.children]))
+            inner = " ".join(filter(None, (walk(c) for c in element.children)))
             return f"\n{'#' * level} {inner}\n"
 
         # 2. Handle links (a tags)
         if tag_name == 'a':
             href = element.get('href', '')
-            inner = " ".join(filter(None, [walk(c) for c in element.children]))
+            inner = " ".join(filter(None, (walk(c) for c in element.children)))
             if href and inner:
                 return f"[{inner}]({href})"
             return inner
 
         # 3. Handle paragraphs (p tags)
         if tag_name == 'p':
-            inner = " ".join(filter(None, [walk(c) for c in element.children]))
+            inner = " ".join(filter(None, (walk(c) for c in element.children)))
             return f"\n{inner}\n"
 
         # 4. For all other tags, extract text from children and join with space
-        return " ".join(filter(None, [walk(c) for c in element.children]))
+        return " ".join(filter(None, (walk(c) for c in element.children)))
 
     target = soup.body if soup.body else soup
     md_content = walk(target)
@@ -79,7 +82,7 @@ def convert_to_md(soup):
 
     # Split by newline, strip each line, and remove empty lines to handle "p标签之间使用换行"
     # and general formatting requirements.
-    lines = [line.strip() for line in md_content.split('\n')]
+    lines = (line.strip() for line in md_content.split('\n'))
     return "\n".join(filter(None, lines))
 
 async def main():

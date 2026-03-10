@@ -19,7 +19,7 @@ class PolymarketAPI:
         url = f"{self.BASE_URL}/markets"
         params = {"slug": slug}
         try:
-            response = self.session.get(url, params=params)
+            response = self.session.get(url, params=params, timeout=10)
             response.raise_for_status()
             markets = response.json()
             if markets and len(markets) > 0:
@@ -41,7 +41,7 @@ class PolymarketAPI:
             "offset": offset
         }
         try:
-            response = self.session.get(url, params=params)
+            response = self.session.get(url, params=params, timeout=10)
             response.raise_for_status()
             return response.json()
         except Exception as e:
@@ -61,7 +61,7 @@ class PolymarketAPI:
             "offset": offset
         }
         try:
-            response = self.session.get(url, params=params)
+            response = self.session.get(url, params=params, timeout=10)
             response.raise_for_status()
             return response.json()
         except Exception as e:
