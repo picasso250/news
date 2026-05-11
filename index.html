@@ -80,6 +80,26 @@
   .review-badge{
     display:inline-block;font-size:11px;padding:2px 10px;margin-top:6px
   }
+  .image-gallery{
+    margin:36px -8px 0;display:flex;gap:16px
+  }
+  .image-gallery figure{
+    flex:1;min-width:0
+  }
+  .image-gallery figcaption{
+    font-size:11px;color:#888;text-align:center;
+    margin-top:6px;letter-spacing:1px
+  }
+  .image-gallery figcaption strong{
+    color:#555;font-weight:600
+  }
+  .image-gallery img{
+    width:100%;height:auto;display:block;
+    border:1px solid #d4caba;background:#fff
+  }
+  @media(max-width:640px){
+    .image-gallery{flex-direction:column}
+  }
   .review-badge.passed{background:#e4ead3;color:#4a6a3a}
   .review-badge.revised{background:#f0e6c8;color:#8a7a3a}
   .footer{
@@ -126,6 +146,11 @@
   <div class="review-badge passed">✔ 已通过事实核查 · 措辞已收敛</div>
 </article>
 
+<figure style="margin:0 0 24px;text-align:center">
+  <img src="cartoon-01.png" alt="时间线翻转讽刺漫画" style="max-width:100%;height:auto;border:1px solid #d4caba;background:#fff">
+  <figcaption style="font-size:11px;color:#888;margin-top:6px;letter-spacing:.5px">▲ 政治讽刺漫画 · codex 调研后创作</figcaption>
+</figure>
+
 <div class="section-divider">✦ ✦ ✦</div>
 
 <article>
@@ -143,6 +168,11 @@
   <div class="review-badge passed">✔ 已通过事实核查 · 补充了框架的不确定性</div>
 </article>
 
+<figure style="margin:0 0 24px;text-align:center">
+  <img src="cartoon-02.png" alt="jagged intelligence 讽刺漫画" style="max-width:100%;height:auto;border:1px solid #d4caba;background:#fff">
+  <figcaption style="font-size:11px;color:#888;margin-top:6px;letter-spacing:.5px">▲ 政治讽刺漫画 · codex 调研后创作</figcaption>
+</figure>
+
 <div class="section-divider">✦ ✦ ✦</div>
 
 <article>
@@ -159,6 +189,11 @@
   </div>
   <div class="review-badge revised">⚑ 修正后 · 补充了复现失败率/验证集风险/适用范围</div>
 </article>
+
+<figure style="margin:0 0 24px;text-align:center">
+  <img src="cartoon-03.png" alt="autoresearch 互补脚手架漫画" style="max-width:100%;height:auto;border:1px solid #d4caba;background:#fff">
+  <figcaption style="font-size:11px;color:#888;margin-top:6px;letter-spacing:.5px">▲ 政治讽刺漫画 · codex 调研后创作</figcaption>
+</figure>
 
 <div class="footer">
   <div>反直觉简报 · 第一期</div>
