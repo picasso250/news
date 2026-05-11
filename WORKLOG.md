@@ -42,20 +42,47 @@
 
 **6. 三张图的生成**
 
-- cartoon-01.png：火车+观察员（时间线翻转）— 成功
-- cartoon-02.png：畸形大脑幽灵（jagged intelligence）— 成功
-- cartoon-03.png：脚手架+高塔（互补/盲区）— 生成成功，画面偏复杂
+- cartoon-01.png：火车+观察员（时间线翻转）— 第一次失败（自主创意莫名其妙），第二次人类给具体创意后成功
+- cartoon-02.png：畸形大脑幽灵（jagged intelligence）— 创意由人类提供（"刷爆所有 Benchmark" vs "建议把汽车装进口袋"），一次成功
+- cartoon-03.png：脚手架+高塔（互补/盲区）— 前5个idea被否定（全落回"高失败率+偶然发现+被质疑"套路），改方向后人类选定idea2（互补脚手架），生成成功但画面偏复杂
+
+**7. 图片压缩**
+
+- 测试了4种方案：原PNG / 隔行扫描 / 256色调色板 / JPEG q85
+- 结论：选择 JPEG q85，三张图 7.8MB → 1.2MB（14-18%），黑色线条无明显伪影
+- EXIF 信息不存在，无需清理
+
+**8. HTML 排版调整**
+
+- 图在文前：figure 移到 article 之前（先看漫画再看文字）
+- 删除底部方向1/方向2 gallery（实验废稿）
+- figcaption 去重：三张图各自独特的描述文字
+- colophon 修改："每日自动生成" → "人类提供漫画创意"（诚实反映当前状态）
+- 移动端适配：body padding=0，datebar flex-direction:column 竖向换行
+
+**9. 部署**
+
+- 研究现有 io99.xyz 子域项目的 wrangler.toml 配置（fuyou/bazi/gold-price-worker）
+- 创建 wrangler.toml + public/ 目录，纯静态资源（无 worker）
+- 部署到 news.io99.xyz（Cloudflare Workers）
+
+**10. Git 与 GitHub**
+
+- gh repo push 遇到分支名问题：本地 master → 远程默认 main，强推后远程仍显示旧内容
+- 修复：git branch -m master main，再 force push 到 main
+- news 仓库名已存在但为不同项目，force push 覆盖
+- 添加 .gitignore（排除 .wrangler/）
 
 ### 当前状态
 
-- 管线可跑通：pi → codex 审查 → pi 修正 → 生成三张图 → 嵌入 HTML
-- 文字部分可自动，图片部分需人类提供创意
-- 第一期 HTML 已落地，live-server 在 localhost:8080
-- git 已初始化，三张图和 HTML 已 commit
+- 管线可跑通：pi → codex 审查 → pi 修正 → 人类提供漫画创意 → codex 生图 → 嵌入 HTML → wrangler 部署
+- 文字部分可自动，图片部分需人类提供具体创意
+- 第一期已部署到 news.io99.xyz
+- 移动端已适配
 
 ### 未解决问题
 
-- 图片生成无法自动化（需人类给具体构图）
-- gh repo push 延迟（news 名称冲突）
-- 从 final.md 到 HTML 的自动化尚未实现
-- live-server 在后台 job 中可能掉线
+- 图片生成无法自动化（需人类给具体构图创意）
+- 从 final.md 到 HTML（含漫画+排版）的自动化尚未实现
+- gh repo push 时 master/main 分支名不匹配导致初次推送失败
+- live-server 在 PowerShell 后台 job 中不稳定，改为直接打开文件
