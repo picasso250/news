@@ -1,0 +1,9 @@
+name = "news"
+compatibility_date = "2026-05-11"
+
+[assets]
+directory = "./public"
+
+[[routes]]
+pattern = "news.io99.xyz"
+custom_domain = true
